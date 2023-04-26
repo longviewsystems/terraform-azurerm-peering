@@ -2,7 +2,7 @@
 resource "azurerm_virtual_network_peering" "peering_src" {
   provider = azurerm.source
 
-  name = var.src_peer_name
+  name                         = var.src_peer_name
   resource_group_name          = local.vnet_src_resource_group_name
   virtual_network_name         = local.vnet_src_name
   remote_virtual_network_id    = var.vnet_dest_id
@@ -15,7 +15,7 @@ resource "azurerm_virtual_network_peering" "peering_src" {
 resource "azurerm_virtual_network_peering" "peering_dest" {
   provider = azurerm.destination
 
-  name = var.dest_peer_name
+  name                         = var.dest_peer_name
   resource_group_name          = local.vnet_dest_resource_group_name
   virtual_network_name         = local.vnet_dest_name
   remote_virtual_network_id    = var.vnet_src_id

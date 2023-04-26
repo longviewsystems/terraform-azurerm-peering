@@ -2,11 +2,11 @@ module "peering" {
   source = "../.."
 
   providers = {
-    azurerm.source = azurerm.hub
+    azurerm.source      = azurerm.hub
     azurerm.destination = azurerm.spoke
   }
 
-  src_peer_name = "peer-src-to-dest"
+  src_peer_name  = "peer-src-to-dest"
   dest_peer_name = "peer-dest-to-src"
 
   vnet_src_id  = azurerm_virtual_network.vnet_src.id
