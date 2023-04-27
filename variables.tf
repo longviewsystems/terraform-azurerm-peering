@@ -4,7 +4,7 @@
 #
 ###############
 variable "src_peer_name" {
-  type = string
+  type        = string
   description = "The source peer name."
 }
 
@@ -45,7 +45,7 @@ variable "use_remote_src_gateway" {
 ################
 
 variable "dest_peer_name" {
-  type = string
+  type        = string
   description = "The destination peer name."
 }
 

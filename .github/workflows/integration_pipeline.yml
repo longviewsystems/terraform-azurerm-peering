@@ -42,10 +42,10 @@ jobs:
         path: ~/.tflint.d/plugins
         key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
 
-    - uses: terraform-linters/setup-tflint@v1
+    - uses: terraform-linters/setup-tflint@v2
       name: Setup TFLint
       with:
-        tflint_version: v0.34.1
+        tflint_version: v0.43.0
 
     - name: Show version
       run: tflint --version
@@ -112,7 +112,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v1 #Install Node 15 apt repo
         with:
-          node-version: 14.x
+          node-version: 18
       - name: Install node modules
         run: |
           npm install npx semantic-release

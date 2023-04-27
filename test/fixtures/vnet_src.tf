@@ -28,7 +28,7 @@ resource "azurerm_resource_group" "rg_src" {
 /*****************************************/
 
 resource "azurerm_virtual_network" "vnet_src" {
-  provider = azurerm.hub
+  provider            = azurerm.hub
   name                = module.naming_src.virtual_network.name_unique
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.rg_src.location
@@ -38,7 +38,7 @@ resource "azurerm_virtual_network" "vnet_src" {
 
 # subnet
 resource "azurerm_subnet" "subnet_src" {
-  provider = azurerm.hub
+  provider             = azurerm.hub
   name                 = "AzureFirewallSubnet"
   resource_group_name  = azurerm_resource_group.rg_src.name
   virtual_network_name = azurerm_virtual_network.vnet_src.name
