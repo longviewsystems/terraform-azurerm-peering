@@ -1,5 +1,5 @@
 # Solution Description
-This module creates Azure Peerings between two vNets.
+This module creates Azure Peering between two vNets.  The peering must be configured on both vNets, and so the module configures that.
 
 # References
 
@@ -11,8 +11,8 @@ N/A
 
 # Usage
 
-```
-module "peering" {
+``` hcl
+module "sample_spoke_peering_with_hub_vpn_gateway" {
   source = "https://github.com/longviewsystems/terraform-azurerm-peering"
 
   providers = {
@@ -26,11 +26,13 @@ module "peering" {
   vnet_src_id  = azurerm_virtual_network.vnet_src.id
   vnet_dest_id = azurerm_virtual_network.vnet_dst.id
 
-  allow_forwarded_src_traffic  = true
-  allow_forwarded_dest_traffic = true
+  #By default the following are enabled:
+  # Allow access to remote virtual network
+  # Allow traffic to remote virtual network
+  # Allow traffic forwarded from the remote virtual network (allow gateway transit)
 
-  allow_virtual_src_network_access  = true
-  allow_virtual_dest_network_access = true
+  # If there's a remote gateway, make sure to set it on the src or dest peer, and probably not both.
+  use_remote_dest_gateway = true
 
 }
 
